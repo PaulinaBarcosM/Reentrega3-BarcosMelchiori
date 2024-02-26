@@ -1,0 +1,7 @@
+// Para los h1 del header
+@mixin positionH1 ($fs, $fsz, $pd, $cl){
+    font-style: $fs;
+    font-size: $fsz;
+    padding: $pd;
+    color: $cl;
+}

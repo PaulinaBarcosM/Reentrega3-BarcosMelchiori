@@ -1,0 +1,229 @@
+
+// reset
+*{
+    padding: $padd-inicio;
+    margin: $marg-inicio;
+    box-sizing: $box-inicio;
+}
+
+// tipografia
+.clase-tipografia{
+    @extend %tipografia;
+}
+
+// barra de navegacion
+header{
+    @extend %disposicion;
+    h1{
+        @include positionH1 (italic, 45px, 10px 10px, whitesmoke);
+    }
+    nav{
+        div{
+            ul{
+                @extend %disposicion-ul;
+                a{
+                    @extend %disposicion-a;
+                }
+            }
+        }
+    }
+}
+
+// tamaño imagenes
+main{
+    div{
+        div{
+            img{
+                @extend %tamaño-imagenes;
+            }
+        }
+    }
+}
+
+//  estilos del footer
+footer{
+    text-align: $texa-footer;
+    margin-top: $matp-footer;
+    ul{
+        li{
+            display: $dis-footer;
+            color: $col-footer;
+            a{
+                @extend %disposicion-aF;
+            }
+    
+        }
+    }
+}
+
+// body index
+#body-index{
+    background-image: url();
+    background-repeat: map-get($body-index, back-repeat );
+    background-position: map-get($body-index, back-position );
+    background-size: map-get($body-index, back-size );
+    color: map-get($body-index, color );
+    .contenedor-index{
+        .h2-index{
+            text-align: map-get($main-h2index, texalign );
+            margin: map-get($main-h2index, margen );
+        } 
+        .parrafo-index{
+            text-align: map-get($main-pindex, texalign );
+        }
+    }
+}
+
+// body pary
+#body-pary{
+    @extend %body-pary;
+    .contenedor-pary{
+        .photos-uno-pary .photos-dos-pary{
+            @extend %photos-pary;
+        }
+        .parrafro-pary{
+            @extend %parrafo-pary;
+        }
+    }
+}
+
+// body urban
+#body-urban{
+    @extend %body-pary;
+    .contenedor-urban{
+        .photos-urban{
+            display: map-get($photos-urban, disp );
+            gap: map-get($photos-urban, gp );
+            margin: map-get($photos-urban, margen );
+        }
+        .h2-urban{
+            color: map-get($h2-urban, colors );
+            text-align: map-get($h2-urban, texalign );
+        }
+    }
+}
+
+// body classic
+#body-classic{
+    @extend %body-pary;
+    .contenedor-classic{
+        .img-cinco-classic, .img-seis-classic{
+            @extend %img-ocultas;
+        }
+        .photos-classic{
+            @extend %photos-classic;
+        }
+    }
+    .footer-classic{
+        @extend %footer-classic;
+    }
+}
+
+// body long in
+#body-longin{
+    background-image: url();
+    @extend %body-longin;
+}
+
+.main-longin{
+    @extend %main-longin;
+    .h4-longin{
+        @extend %h4-longin;
+    }
+}
+.tipografia-boostrap{
+    @extend %tipografia-bs;
+}
+.tipografia-boostrap-hover{
+    @extend %tipografia-bs-hover;
+}
+.color-enter{
+    @extend %color-enter-bs;
+}
+.contenedor-boostrap-longin{
+    @extend %footer-bs;
+}
+.contenedor-instagram .contenedor-twitter{
+    @extend %contenedores-igtw;
+}
+.boton-twitter, .boton-instagram{
+    @extend %boton-igtw;
+}
+.titulo-instagram{
+    @extend %titulo-ig;
+}
+
+// media querie tablet
+@media screen and (min-width:900px){
+    // artistic pary
+    .contenedor-pary{
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 50%);
+        .img-uno-pary .img-dos-pary{
+            grid-column: map-get($img-gridcolumn, gridcolumn );
+        }
+        .img-tres-pary .img-cuatro-pary{
+            grid-column: map-get($img-gridcolumn, gridcolum );
+        }
+        .img-cinco-pary .img-seis-pary{
+            grid-column: map-get($img-gridcolumn, gridcolumn );
+        }
+    }
+    
+    // classic
+    .contenedor-classic{
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        .img-ocho-classic .img-siete-classic{
+            grid-column: map-get($img-gridcolumn, gridcolumn );
+        }
+    }
+
+    // urban
+    .contenedor-urban{
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(3, 50%);
+    }
+}
+
+// media querie desktop
+@media screen and (min-width:1024px){
+    // artistic pary
+    .contenedor-pary{
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: repeat(2, 1fr);
+        .img-uno-pary .img-dos-pary .img-tres-pary{
+            grid-column: map-get($img-gridcolumn3, gridcolu );
+        }
+        .img-cuatro-pary .img-cinco-pary .img-seis-pary{
+            grid-column: map-get($img-gridcolumn3, gridcolu );
+        }
+    }
+
+    // classic
+    .contenedor-classic{
+        .img-cinco-classic .img-seis-classic{
+            display: none;
+        }
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-rows: 40% 40% 15% 30%;
+        .img-uno-classic .img-tres-classic{
+            grid-row: map-get($img-gridrow, gridrows );
+        }
+        .img-dos-classic .img-cuatro-classic{
+            grid-column: map-get($img-gridcolumn2, gridcolu );
+        }
+        .img-siete-classic .img-cinco-classic .img-seis-classic{
+            grid-row: map-get($img-gridrow2, gridrow );
+        }
+    }
+
+    // urban
+    .contenedor-urban{
+        .img-tres-urban{
+            display: none
+        }
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
+}
